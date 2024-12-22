@@ -35,6 +35,12 @@ function App() {
       (selectedCategory ? product.categoryId === selectedCategory : true) &&
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
+  }).sort((a,b)=>{
+    if(sortOrder === "asc"){
+      return a.price-b.price;
+    }else{
+      return b.price-a.price;
+    }
   });
   // console.log(products);
   // console.log(selectedCategory);
