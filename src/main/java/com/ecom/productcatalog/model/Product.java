@@ -1,6 +1,7 @@
 package com.ecom.productcatalog.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 
@@ -21,6 +22,11 @@ public class Product {
     @JoinColumn(name="category_id",nullable = false)
     @JsonIgnore
     private Category category;
+
+    @JsonProperty("categoryId")
+    public Long getCategoryId() {
+        return category != null ? category.getId() : null;
+    }
 
     public Long getId() {
         return id;

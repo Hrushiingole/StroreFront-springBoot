@@ -30,9 +30,12 @@ function App() {
     // console.log(selectedCategory);
   }
 
-  
-   const categoryObj=categories.find(category=>category.id===selectedCategory);
-   const filteredProducts=categoryObj ? categoryObj.products : products;
+  const filteredProducts=products.filter(product=>{
+    return(
+      (selectedCategory ? product.categoryId === selectedCategory : true) &&
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  });
   // console.log(products);
   // console.log(selectedCategory);
   // console.log(categories);
